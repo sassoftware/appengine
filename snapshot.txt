@@ -1,60 +1,80 @@
 [tree1]
 root = .
 revision = None
+path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/
 
 [tree2]
 root = catalog-client
 revision = None
+path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/catalog-client
 
 [tree3]
 root = catalog-service
 revision = None
+path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/catalog-service
 
 [tree4]
 root = catalog-service-private
 revision = None
+path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/catalog-service-private
 
 [tree5]
 root = catalog/catalog-service-private.bak
 revision = None
+path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/catalog/catalog-service-private.bak
 
 [tree6]
 root = catalog/catalog-service.bak
 revision = None
+path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/catalog/catalog-service.bak
 
 [tree7]
 root = flexlibs
 revision = None
+path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/flexlibs
 
 [tree8]
 root = jobmaster
 revision = None
+path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/jobmaster
 
 [tree9]
 root = jobslave
 revision = None
+path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/jobslave
 
 [tree10]
 root = mcp
 revision = None
+path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/mcp
 
 [tree11]
 root = mint
 revision = None
+path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/mint
 
 [tree12]
 root = pcreator
 revision = None
+path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/pcreator
 
 [tree13]
 root = pcreator-test
 revision = None
+path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/pcreator-test
 
 [tree14]
 root = rbuilder-ui
 revision = None
+path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/rbuilder-ui
 
 [tree15]
 root = stomp.py
 revision = None
+path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/stomp.py
+
+[tree16]
+root = xobj
+revision = None
+path.default = ssh://scc.eng.rpath.com//hg/products/xobj/trunk/xobj
 
