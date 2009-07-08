@@ -19,61 +19,51 @@ revision = None
 path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/catalog-service-private
 
 [tree5]
-root = catalog/catalog-service-private.bak
-revision = None
-path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/catalog/catalog-service-private.bak
-
-[tree6]
-root = catalog/catalog-service.bak
-revision = None
-path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/catalog/catalog-service.bak
-
-[tree7]
 root = flexlibs
 revision = None
 path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/flexlibs
 
-[tree8]
+[tree6]
 root = jobmaster
 revision = None
 path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/jobmaster
 
-[tree9]
+[tree7]
 root = jobslave
 revision = None
 path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/jobslave
 
-[tree10]
+[tree8]
 root = mcp
 revision = None
 path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/mcp
 
-[tree11]
+[tree9]
 root = mint
 revision = None
 path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/mint
 
-[tree12]
+[tree10]
 root = pcreator
 revision = None
 path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/pcreator
 
-[tree13]
+[tree11]
 root = pcreator-test
 revision = None
 path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/pcreator-test
 
-[tree14]
+[tree12]
 root = rbuilder-ui
 revision = None
 path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/rbuilder-ui
 
-[tree15]
+[tree13]
 root = stomp.py
 revision = None
 path.default = ssh://scc.eng.rpath.com//hg/products/rbuilder/trunk/stomp.py
 
-[tree16]
+[tree14]
 root = xobj
 revision = None
 path.default = ssh://scc.eng.rpath.com//hg/products/xobj/trunk/xobj
