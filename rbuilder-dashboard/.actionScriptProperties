@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<actionScriptProperties mainApplicationPath="rBADashboard.mxml" version="3">
+  <compiler additionalCompilerArguments="-locale en_US -keep-as3-metadata+=ArrayElementType,xobjTransient -include-libraries &quot;${FLEXLIBS}/static-libs/qa/riatestagent.swc&quot; &quot;${FLEXLIBS}/static-libs/qa/automation.swc&quot; &quot;${FLEXLIBS}/static-libs/qa/automation_agent.swc&quot; &quot;${FLEXLIBS}/static-libs/qa/automation_dmv.swc&quot; -target-player=10.0.0" copyDependentFiles="true" enableModuleDebug="true" flexSDK="Flex 3.3" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="true" htmlHistoryManagement="true" htmlPlayerVersion="10.0.0" htmlPlayerVersionCheck="true" outputFolderPath="bin-debug" sourceFolderPath="src" strict="true" useApolloConfig="false" verifyDigests="true" warn="true">
+    <compilerSourcePath/>
+    <libraryPath defaultLinkType="1">
+      <libraryPathEntry kind="4" path=""/>
+      <libraryPathEntry kind="1" linkType="1" path="libs"/>
+      <libraryPathEntry kind="3" linkType="1" path="/RAF/bin/RAF.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="1" path="/flexlib/bin/flexlib.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="1" path="/rbuilder_ui_core/bin/rbuilder_ui_core.swc" useDefaultLinkType="false"/>
+    </libraryPath>
+    <sourceAttachmentPath/>
+  </compiler>
+  <applications/>
+  <modules/>
+  <buildCSSFiles/>
+</actionScriptProperties>
