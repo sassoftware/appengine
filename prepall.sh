@@ -4,3 +4,4 @@ for x in catalog-service mint rpath-capsule-indexer rpath-product-definition rpa
 do
     make -C $x
 done
+make -C conary minimal
