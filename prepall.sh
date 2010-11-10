@@ -5,3 +5,5 @@ do
     make -C $x || exit 1
 done
 make -C conary minimal || exit 1
+make -C rmake3 all rmake3 || exit 1
+python -mcompileall -f `pwd`/include/*
