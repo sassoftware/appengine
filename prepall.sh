@@ -6,4 +6,5 @@ do
 done
 make -C conary minimal || exit 1
 make -C rmake3 all rmake3 || exit 1
+make -C pcreator-test replace-rpl2 || exit 1
 python -mcompileall -f `pwd`/include/*
