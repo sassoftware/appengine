@@ -1,8 +1,7 @@
 search contrib.rpath.org@rpl:2
 search contrib.rpath.org@rpl:2-py26
 search group-os=conary.rpath.com@rpl:2
-search python=foresight.rpath.org@fl:2-compat
-search group-os=conary.rpath.com@rpl:2-py26-devel
+search group-os=conary.rpath.com@rpl:2-py26
 install group-appliance-platform
 
 search mercurial=cantwait.rpath.org@rpl:2-py26
@@ -73,6 +72,7 @@ install libelf-lgpl
 install libxml2
 install openssl
 install python
+install python2.4
 install sqlite
 install zlib
 
