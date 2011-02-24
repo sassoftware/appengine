@@ -1,0 +1,127 @@
+search contrib.rpath.org@rpl:2
+search contrib.rpath.org@rpl:2-py26
+search group-os=conary.rpath.com@rpl:2
+search python=foresight.rpath.org@fl:2-compat
+search group-os=conary.rpath.com@rpl:2-py26-devel
+install group-appliance-platform
+
+search mercurial=cantwait.rpath.org@rpl:2-py26
+search xz=cantwait.rpath.org@rpl:2
+
+update conary=jules.eng.rpath.com@rpath:fl-2-conary-2.2
+update conary-build=jules.eng.rpath.com@rpath:fl-2-conary-2.2
+update conary-repository=jules.eng.rpath.com@rpath:fl-2-conary-2.2
+update conary-policy=jules.eng.rpath.com@rpath:fl-2-conary-2.2
+
+# rPath tools
+install rbuild
+install rbuilder-client
+install rmake
+
+# Tools and daemons
+install bzip2
+install ctags
+install curl
+install file
+install gnupg
+install less
+install man
+install mkisofs
+install nc
+install ncurses
+install neon
+install openssh
+install openssh-client
+install perl
+install popt
+install postgresql
+install postgresql-contrib
+install postgresql-server
+install rmake
+install rsh
+install squid
+install sudo
+install tmpwatch
+install vim
+install which
+
+# C toolchain
+install autoconf
+install automake
+install binutils
+install bison
+install debugedit
+install elfutils
+install flex
+install gcc
+install gcc-c++
+install gdb
+install gettext
+install glibc
+install intltool
+install libtool
+install make
+install pcre
+install pkgconfig
+install strace
+install userspace-kernel-headers
+install xmlto
+
+# C libraries
+install libcap
+install libelf-lgpl
+install libxml2
+install openssl
+install python
+install sqlite
+install zlib
+
+# Source control
+install bzr
+install cvs
+install git
+install hg-forest
+install mercurial
+install patch
+install subversion
+install tar
+install unzip
+install xz
+
+# Python libraries
+install decorator
+install django
+install django-db-postgres
+install django-db-sqlite3
+install django-rest-interface
+install epdb
+install kid
+install lxml
+install nss
+install psycopg2
+install python-dateutil
+install python-pgsql
+install python-setuptools
+install python-setuptools
+install python-twisted
+install readline
+install reportlab
+install rpath-common
+install rpath-product-definition
+install simplejson
+install SQLAlchemy
+install webunit
+
+# httpd
+install httpd
+install mod_python
+install mod_ssl
+
+# Misc requirements
+install asciidoc
+install docbook-dsssl
+install docbook-dtds
+install docbook-xsl
+install group-rpm=rpm.rpath.org@rpath:linux-2-py26
+
+# Customizations
