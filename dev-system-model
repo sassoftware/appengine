@@ -91,6 +91,7 @@ install xz
 # Python libraries
 install decorator
 install django
+install django-debug-toolbar
 install django-db-postgres
 install django-db-sqlite3
 install django-rest-interface
