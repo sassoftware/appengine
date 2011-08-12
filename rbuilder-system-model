@@ -1,0 +1,108 @@
+search contrib.rpath.org@rpl:2
+search contrib.rpath.org@rpl:2-py26
+search group-os=conary.rpath.com@rpl:2-qa/2.0.2-0.3-8
+search group-os=conary.rpath.com@rpl:2-py26-devel/20110502-0.0.1-4
+search group-rpath-platform=jules.eng.rpath.com@rpath:platform-edge-devel/6.1.0-2-2
+search group-rbuilder-dist=jules.eng.rpath.com@rpath:rba-edge/6.1.0-2-354
+install group-rbuilder-appliance
+
+search mercurial=cantwait.rpath.org@rpl:2-py26
+
+# Tools and daemons
+install bzip2
+install ctags
+install curl
+install file
+install gnupg
+install less
+install man
+install mkisofs
+install nc
+install ncurses
+install neon
+install openssh
+install openssh-client
+install perl
+install popt
+install rmake
+install rsh
+install squid
+install sudo
+install tmpwatch
+install vim
+install which
+
+# C toolchain
+install autoconf
+install automake
+install binutils
+install bison
+install debugedit
+install elfutils
+install flex
+install gcc
+install gcc-c++
+install gdb
+install gettext
+install glibc
+install intltool
+install libtool
+install make
+install pcre
+install pkgconfig
+install strace
+install userspace-kernel-headers
+install xmlto
+
+# C libraries
+install libcap
+install libelf-lgpl
+install libxml2
+install openssl
+install python
+install python2.4
+install sqlite
+install zlib
+
+# Source control
+install bzr
+install cvs
+install git
+install hg-forest
+install mercurial
+install patch
+install subversion
+install tar
+install unzip
+install xz
+
+# Python libraries
+install decorator
+install django-debug-toolbar
+install django-db-postgres
+install django-db-sqlite3
+install django-rest-interface
+install epdb
+install kid
+install lxml
+install nss
+install psycopg2
+install python-dateutil
+install python-pgsql
+install python-setuptools
+install python-setuptools
+install python-twisted
+install readline
+install reportlab
+install rpath-common
+install rpath-product-definition
+install simplejson
+install SQLAlchemy
+install webunit
+
+# Misc requirements
+install asciidoc
+install docbook-dsssl
+install docbook-dtds
+install docbook-xsl
+install django
