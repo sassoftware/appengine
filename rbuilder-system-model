@@ -7,6 +7,7 @@ search group-rbuilder-dist=jules.eng.rpath.com@rpath:rba-edge/6.1.0-2-354
 install group-rbuilder-appliance
 
 search mercurial=cantwait.rpath.org@rpl:2-py26
+search testutils=jules.eng.rpath.com@rpath:testutils-python2.6
 
 # Tools and daemons
 install bzip2
@@ -98,6 +99,7 @@ install rpath-common
 install rpath-product-definition
 install simplejson
 install SQLAlchemy
+install testutils
 install webunit
 
 # Misc requirements
