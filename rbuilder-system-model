@@ -1,5 +1,3 @@
-search contrib.rpath.org@rpl:2
-search contrib.rpath.org@rpl:2-py26
 search group-os=conary.rpath.com@rpl:2-qa/2.0.2-0.3-8
 search group-os=conary.rpath.com@rpl:2-py26-devel/20110502-0.0.1-4
 search group-rpath-platform=jules.eng.rpath.com@rpath:platform-edge-devel/6.1.0-2-2
@@ -8,6 +6,8 @@ install group-rbuilder-appliance
 
 search mercurial=cantwait.rpath.org@rpl:2-py26
 search testutils=jules.eng.rpath.com@rpath:testutils-python2.6
+search hg-forest=contrib.rpath.org@rpl:2-py26/hg.bf6d44054cec-1-0.1
+search pyflakes=contrib.rpath.org@rpl:2-py26/0.4.0-1-0.1
 
 # Tools and daemons
 install bzip2
