@@ -3,6 +3,10 @@
 #
 
 PYVER = $(shell python -c 'import sys; print(sys.version[0:3])')
+# These will extract the code 
+CODE_VERSION = $(shell grep '^macros version ' bob-plans/config/rbuilder.conf | cut -d' ' -f3)
+CODE_MAJOR = $(shell grep '^targetLabel ' bob-plans/config/rbuilder.conf | cut -d':' -f2 | cut -d- -f1,2)
+TAG = $(CODE_MAJOR)-$(CODE_VERSION)
 
 make_dirs = \
 	conary \
@@ -34,7 +38,16 @@ snapshot:
 		echo "$$x" >>substate.txt; \
 	done
 	@echo
-	@echo "Now verify substate.txt, commit, and tag."
+	@echo "Now verify substate.txt, commit, and tag:"
+	@echo "hg tag $(TAG)"
+
+tag: snapshot
+	@for x in mint; do\
+		[ -d "$$x/.hg" ] || continue; \
+		tag=$$(awk "\$$2 == \"$$x\" {print \$$1}" substate.txt); \
+		echo hg -R $$x tag -r $$tag $(TAG); \
+		echo hg -R $$x push; \
+	done
 
 clean:
 	for x in $(make_dirs); do $(MAKE) -C $$x clean || exit 1; done
