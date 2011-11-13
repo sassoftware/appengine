@@ -12,7 +12,6 @@ make_dirs = \
 	conary \
 	conary-test \
 	catalog-service \
-	mint \
 	rmake \
 	rmake3 \
 	rpath-capsule-indexer \
@@ -28,6 +27,7 @@ all:
 	for x in $(make_dirs); do $(MAKE) -C $$x || exit 1; done
 	$(MAKE) -C rmake3 rmake3
 	$(MAKE) -C pcreator-test replace-rpl2
+	make -C mint
 	python$(PYVER) -mcompileall -f `pwd`/include/*
 
 snapshot:
@@ -51,3 +51,4 @@ tag: snapshot
 
 clean:
 	for x in $(make_dirs); do $(MAKE) -C $$x clean || exit 1; done
+	make -C mint clean
