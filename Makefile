@@ -23,6 +23,26 @@ make_dirs = \
 	smartform/py/smartform \
 	raa \
 
+# These trees get tagged individually, in addition to the basic snapshot. The
+# only purpose is to make it easier to diff those trees between rBuilder
+# versions.
+# Note: only tag trees that:
+# A) are unique to rbuilder (not conary, rmake, etc.) -- this reduces tag spam
+#    in public trees
+# B) are moderately active, because there's no benefit if nobody actually uses
+#    the tags
+tag_dirs = \
+	bob-plans \
+	hudson \
+	jobslave \
+	mint \
+	qa \
+	rbm \
+	rbuilder-ui \
+	recipes \
+	rpath-repeater \
+
+
 all:
 	for x in $(make_dirs); do $(MAKE) -C $$x || exit 1; done
 	$(MAKE) -C rmake3 rmake3
@@ -31,23 +51,24 @@ all:
 	python$(PYVER) -mcompileall -f `pwd`/include/*
 
 snapshot:
-	> substate.txt
-	for x in *; do \
+	@ > substate.txt
+	@for x in *; do \
 		[ -d "$$x/.hg" ] || continue; \
+		echo SNAPSHOT $$x; \
 		hg -R "$$x" parents --template "{node} " >>substate.txt || exit 1; \
 		echo "$$x" >>substate.txt; \
 	done
 	@echo
 	@echo "Now verify substate.txt, commit, and tag:"
+	@echo hg ci -m "$(CODE_VERSION)"
 	@echo "hg tag $(TAG)"
 
 tag: snapshot
-	@for x in mint; do\
-		[ -d "$$x/.hg" ] || continue; \
+	@for x in $(tag_dirs); do\
 		tag=$$(awk "\$$2 == \"$$x\" {print \$$1}" substate.txt); \
 		echo hg -R $$x tag -r $$tag $(TAG); \
-		echo hg -R $$x push; \
 	done
+	@echo hg fpush
 
 clean:
 	for x in $(make_dirs); do $(MAKE) -C $$x clean || exit 1; done
