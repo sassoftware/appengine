@@ -83,5 +83,5 @@ if [ -f ~/.pystartup ] ; then
     run echo "export PYTHONSTARTUP=$HOME/.pystartup" >> /root/.bashrc
 fi
 
-run echo "export PYTHONPATH=$checkout/include" > /tmp/rbuilder.sh
+run echo "export PYTHONPATH=$checkout/include" > /etc/profile.d/rbuilder.sh
 run $checkout/mint/scripts/group-script
