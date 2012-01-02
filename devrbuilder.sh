@@ -80,8 +80,8 @@ copy /tmp/apache.conf /etc/httpd/conf.d/rbuilder/00_include.conf
 # Setup python config
 if [ -f ~/.pystartup ] ; then
     copy ~/.pystartup /root/.pystartup
-    run echo "export PYTHONSTARTUP=$HOME/.pystartup" >> /root/.bashrc
+    run 'echo "export PYTHONSTARTUP=$HOME/.pystartup" >> /root/.bashrc'
 fi
 
-run echo "export PYTHONPATH=$checkout/include" > /etc/profile.d/rbuilder.sh
+run "echo \"export PYTHONPATH=$checkout/include\" > /etc/profile.d/rbuilder.sh"
 run $checkout/mint/scripts/group-script
