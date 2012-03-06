@@ -10,7 +10,6 @@ TAG = $(CODE_MAJOR)-$(CODE_VERSION)
 
 make_dirs = \
 	conary \
-	conary-test \
 	catalog-service \
 	rmake \
 	rmake3 \
