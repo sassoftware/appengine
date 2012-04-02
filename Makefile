@@ -55,6 +55,7 @@ snapshot:
 	@for x in *; do \
 		[ -d "$$x/.hg" ] || continue; \
 		echo SNAPSHOT $$x; \
+		[ -s "$$x/.hg/patches/status" ] && { echo $$x has patches applied, aborting; exit 1; }; \
 		hg -R "$$x" parents --template "{node} " >>substate.txt || exit 1; \
 		echo "$$x" >>substate.txt; \
 	done
