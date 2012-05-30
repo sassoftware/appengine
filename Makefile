@@ -8,6 +8,8 @@ export PYVER = $(shell $(PYTHON) -c 'import sys; print(sys.version[0:3])')
 CODE_VERSION = $(shell grep '^macros version ' bob-plans/config/rbuilder.conf | cut -d' ' -f3)
 CODE_MAJOR = $(shell grep '^targetLabel ' bob-plans/config/rbuilder.conf | cut -d':' -f2 | cut -d- -f1,2)
 TAG = $(CODE_MAJOR)-$(CODE_VERSION)
+site_packages = /usr/lib64/python$(PYVER)/site-packages
+pth_file = $(site_packages)/devrbuilder.pth
 
 make_dirs = \
 	conary \
@@ -78,8 +80,8 @@ clean:
 	make -C mint clean
 
 install-pth:
-	echo "import sys; sys.path.insert(0, '$(PWD)/include')" \
-		> /usr/lib64/python$(PYVER)/site-packages/rbuilder.pth
+	echo "import sys; sys.path.insert(0, '$(CURDIR)/include')" > $(pth_file)
+	echo "import sys; sys.path.insert(0, '$(site_packages)/raa/vendor')" >> $(pth_file)
 
 uninstall-pth:
-	rm -f /usr/lib64/python$(PYVER)/site-packages/rbuilder.pth
+	rm -f $(pth_file)
