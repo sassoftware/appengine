@@ -2,7 +2,8 @@
 # Copyright (c) 2011 rPath, Inc.
 #
 
-PYVER = $(shell python -c 'import sys; print(sys.version[0:3])')
+export PYTHON = python
+export PYVER = $(shell $(PYTHON) -c 'import sys; print(sys.version[0:3])')
 # These will extract the code 
 CODE_VERSION = $(shell grep '^macros version ' bob-plans/config/rbuilder.conf | cut -d' ' -f3)
 CODE_MAJOR = $(shell grep '^targetLabel ' bob-plans/config/rbuilder.conf | cut -d':' -f2 | cut -d- -f1,2)
@@ -47,8 +48,9 @@ all:
 	for x in $(make_dirs); do $(MAKE) -C $$x || exit 1; done
 	$(MAKE) -C rmake3 rmake3
 	$(MAKE) -C pcreator-test replace-rpl2
-	make -C mint
-	python$(PYVER) -mcompileall -f `pwd`/include/*
+	$(MAKE) -C mint
+	( cd jobmaster && $(PYTHON) setup.py build_ext --inplace )
+	$(PYTHON) -mcompileall -f `pwd`/include/*
 
 snapshot:
 	@ > substate.txt
@@ -74,3 +76,10 @@ tag: snapshot
 clean:
 	for x in $(make_dirs); do $(MAKE) -C $$x clean || exit 1; done
 	make -C mint clean
+
+install-pth:
+	echo "import sys; sys.path.insert(0, '$(PWD)/include')" \
+		> /usr/lib64/python$(PYVER)/site-packages/rbuilder.pth
+
+uninstall-pth:
+	rm -f /usr/lib64/python$(PYVER)/site-packages/rbuilder.pth

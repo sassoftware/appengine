@@ -1,0 +1,1 @@
+../../mint/rmake_plugins/windows_image_generator.py

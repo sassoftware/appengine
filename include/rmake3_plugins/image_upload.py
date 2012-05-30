@@ -1,0 +1,1 @@
+../../mint/rmake_plugins/image_upload.py
