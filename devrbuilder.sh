@@ -72,10 +72,7 @@ checkout="$checkoutdir/$branch"
 run mkdir -p $checkoutdir
 run hg fclone ssh://$USER@scc.eng.rpath.com//hg/products/rbuilder/$branch $checkout
 run make -C $checkout
-
-# reconfigure apache to run out of a checkout
-echo "PythonPath \"['$checkout/include'] + sys.path\"" > /tmp/apache.conf
-copy /tmp/apache.conf /etc/httpd/conf.d/rbuilder/00_include.conf
+run make -C $checkout install-pth
 
 # Setup python config
 if [ -f ~/.pystartup ] ; then
@@ -83,5 +80,4 @@ if [ -f ~/.pystartup ] ; then
     run 'echo "export PYTHONSTARTUP=$HOME/.pystartup" >> /root/.bashrc'
 fi
 
-run "echo \"export PYTHONPATH=$checkout/include\" > /etc/profile.d/rbuilder.sh"
 run $checkout/mint/scripts/group-script
