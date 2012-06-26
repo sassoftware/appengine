@@ -25,7 +25,6 @@ make_dirs = \
 	rpath-xmllib \
 	smartform/py/smartform \
 	raa \
-	rpath-tools \
 
 # These trees get tagged individually, in addition to the basic snapshot. The
 # only purpose is to make it easier to diff those trees between rBuilder
@@ -45,7 +44,6 @@ tag_dirs = \
 	rbuilder-ui \
 	recipes \
 	rpath-repeater \
-	rpath-tools \
 
 
 all:
