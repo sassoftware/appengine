@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2011 rPath, Inc.
+# Copyright (c) rPath, Inc.
 #
 
 export PYTHON = python
@@ -8,6 +8,7 @@ export PYVER = $(shell $(PYTHON) -c 'import sys; print(sys.version[0:3])')
 CODE_VERSION = $(shell grep '^macros version ' bob-plans/config/rbuilder.conf | cut -d' ' -f3)
 CODE_MAJOR = $(shell grep '^targetLabel ' bob-plans/config/rbuilder.conf | cut -d':' -f2 | cut -d- -f1,2)
 TAG = $(CODE_MAJOR)-$(CODE_VERSION)
+BRANCH = $(notdir $(CURDIR))
 site_packages = /usr/lib64/python$(PYVER)/site-packages
 pth_file = $(site_packages)/devrbuilder.pth
 
@@ -85,3 +86,10 @@ install-pth:
 
 uninstall-pth:
 	rm -f $(pth_file)
+
+update:
+	sed -i \
+		-e "s#^search group-rbuilder-\(dist\|appliance\)=.*#search $(shell conary rq --labels group-rbuilder-dist=jules.eng.rpath.com@rpath:rba-$(BRANCH))#" \
+		-e "s#^search group-rpath-platform=.*#search $(shell conary rq --labels group-rpath-platform=jules.eng.rpath.com@rpath:platform-$(BRANCH)-devel)#" \
+		/etc/conary/system-model
+	conary sync
