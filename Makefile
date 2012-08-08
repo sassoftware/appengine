@@ -88,6 +88,7 @@ uninstall-pth:
 	rm -f $(pth_file)
 
 update:
+	[ -f /etc/conary/system-model ] || cp rbuilder-system-model /etc/conary/system-model
 	sed -i \
 		-e "s#^search group-rbuilder-\(dist\|appliance\)=.*#search $(shell conary rq --labels group-rbuilder-dist=jules.eng.rpath.com@rpath:rba-$(BRANCH))#" \
 		-e "s#^search group-rpath-platform=.*#search $(shell conary rq --labels group-rpath-platform=jules.eng.rpath.com@rpath:platform-$(BRANCH)-devel)#" \
