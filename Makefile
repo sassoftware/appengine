@@ -5,8 +5,8 @@
 export PYTHON = python
 export PYVER = $(shell $(PYTHON) -c 'import sys; print(sys.version[0:3])')
 # These will extract the code 
-CODE_VERSION = $(shell grep '^macros version ' bob-plans/config/rbuilder.conf | cut -d' ' -f3)
-CODE_MAJOR = $(shell grep '^targetLabel ' bob-plans/config/rbuilder.conf | cut -d':' -f2 | cut -d- -f1,2)
+CODE_VERSION = $(shell grep '^macros version ' bob-plans/config/version.conf | cut -d' ' -f3)
+CODE_MAJOR = rba-$(shell grep '^macros rbuilder_forest ' bob-plans/config/version.conf | cut -d' ' -f3 | cut -d- -f1)
 TAG = $(CODE_MAJOR)-$(CODE_VERSION)
 BRANCH = $(notdir $(CURDIR))
 site_packages = /usr/lib64/python$(PYVER)/site-packages
