@@ -7,10 +7,10 @@ install group-appliance-platform
 search mercurial=cantwait.rpath.org@rpl:2-py26
 search xz=cantwait.rpath.org@rpl:2
 
-update conary=jules.eng.rpath.com@rpath:fl-2-conary-2.2
-update conary-build=jules.eng.rpath.com@rpath:fl-2-conary-2.2
-update conary-repository=jules.eng.rpath.com@rpath:fl-2-conary-2.2
-update conary-policy=jules.eng.rpath.com@rpath:fl-2-conary-2.2
+update conary=newton.eng.rpath.com@rpath:fl-2-conary-2.4
+update conary-build=newton.eng.rpath.com@rpath:fl-2-conary-2.4
+update conary-repository=newton.eng.rpath.com@rpath:fl-2-conary-2.4
+update conary-policy=newton.eng.rpath.com@rpath:fl-2-conary-2.4
 
 # rPath tools
 install rbuild

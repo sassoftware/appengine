@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "Fix me, I'm broken"
+exit 1
 #
 # Copyright (c) 2011 rPath, Inc.
 #
