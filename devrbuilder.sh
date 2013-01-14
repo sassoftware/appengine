@@ -1,8 +1,6 @@
 #!/bin/bash
-echo "Fix me, I'm broken"
-exit 1
 #
-# Copyright (c) 2011 rPath, Inc.
+# Copyright (c) SAS Institute
 #
 # Simple script to convert an rbuilder to running out of a checkout and
 # install any needed dev tools.
@@ -41,15 +39,24 @@ function copy() {
 # Deploy my ssh key
 ssh-copy-id root@$hostname
 
-# Copy dev ssh key
-##copy ~/id_rsa_devkey /root/.ssh/id_rsa
-
 # Copy my known hosts to avoid asking later
 copy ~/.ssh/known_hosts /root/.ssh/known_hosts
 
 # Get the latest versions of group rbuilder
-platform=$(conary rq --labels group-rpath-platform=jules.eng.rpath.com@rpath:platform-$branch-devel)
-dist=$(conary rq --labels group-rbuilder-dist=jules.eng.rpath.com@rpath:rba-$branch)
+platform=$(conary rq --labels group-rpath-platform=newton.eng.rpath.com@rpath:platform-$branch-devel)
+dist=$(conary rq --labels group-rbuilder-dist=newton.eng.rpath.com@rpath:rba-$branch)
+
+tmpcnyconf=$(mktemp)
+cat << EOF >$tmpcnyconf
+proxyMap 10.0.0.0/8 DIRECT
+proxyMap 172.16.0.0/12 DIRECT
+proxyMap 192.168.0.0/16 DIRECT
+proxyMap * conarys://rbuilder.unx.sas.com
+proxyMap * conary://rbuilder.unx.sas.com
+proxyMap * http://inetgw.fyi.sas.com
+EOF
+
+copy $tmpcnyconf /etc/conary/config.d/httpProxy
 
 cat ~/hg/rbuilder-$branch/rbuilder-system-model | sed -e "s|^search\ group-rpath-platform.*|search\ $platform|" | sed -e "s|^search\ group-rbuilder-dist.*|search\ $dist|" > /tmp/rbuilder-system-model
 
@@ -72,7 +79,7 @@ copy ~/.vim /root/.vim
 checkoutdir="/srv/code/products/rbuilder"
 checkout="$checkoutdir/$branch"
 run mkdir -p $checkoutdir
-run hg fclone ssh://$USER@scc.eng.rpath.com//hg/products/rbuilder/$branch $checkout
+run hg fclone ssh://$USER@scc.unx.sas.com//hg/products/rbuilder/$branch $checkout
 run make -C $checkout
 run make -C $checkout install-pth
 
