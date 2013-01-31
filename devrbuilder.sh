@@ -67,6 +67,7 @@ run conary updateall
 run conary update vim=buildme.rb.rpath.com@rpath:buildme-2
 run conary install pyflakes=buildme.rb.rpath.com@rpath:buildme-2
 run conary install pyflakes-vim=buildme.rb.rpath.com@rpath:buildme-2
+run conary install {tmux,libevent:lib}=contrib.rpath.org@rpl:2
 
 # Write out my hgrc
 copy ~/.hgrc /root/.hgrc
