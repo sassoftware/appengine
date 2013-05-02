@@ -44,7 +44,7 @@ copy ~/.ssh/known_hosts /root/.ssh/known_hosts
 
 # Get the latest versions of group rbuilder
 platform=$(conary rq --labels group-rpath-platform=newton.eng.rpath.com@rpath:platform-$branch-devel)
-dist=$(conary rq --labels group-rbuilder-dist=newton.eng.rpath.com@rpath:rba-$branch)
+dist=$(conary rq --labels group-rbuilder-dist=newton.eng.rpath.com@rpath:rba-$branch-rba)
 
 tmpcnyconf=$(mktemp)
 cat << EOF >$tmpcnyconf
@@ -60,14 +60,13 @@ copy $tmpcnyconf /etc/conary/config.d/httpProxy
 
 cat ~/hg/rbuilder-$branch/rbuilder-system-model | sed -e "s|^search\ group-rpath-platform.*|search\ $platform|" | sed -e "s|^search\ group-rbuilder-dist.*|search\ $dist|" > /tmp/rbuilder-system-model
 
+# Configure conary to use rbuilder.unx as a proxy
+run "echo 'includeConfigFile http://delphi.unx.sas.com/conaryrc' > /etc/conary/config.d/proxy"
+
 # Copy over the system model and update the system
 copy /tmp/rbuilder-system-model /etc/conary/system-model
 run echo 'updating system'
 run conary updateall
-run conary update vim=buildme.rb.rpath.com@rpath:buildme-2
-run conary install pyflakes=buildme.rb.rpath.com@rpath:buildme-2
-run conary install pyflakes-vim=buildme.rb.rpath.com@rpath:buildme-2
-run conary install {tmux,libevent:lib}=contrib.rpath.org@rpl:2
 
 # Write out my hgrc
 copy ~/.hgrc /root/.hgrc
