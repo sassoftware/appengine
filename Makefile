@@ -80,8 +80,9 @@ clean:
 	make -C mint clean
 
 install-pth:
-	echo "import sys; sys.path.insert(0, '$(CURDIR)/include')" > $(pth_file)
-	echo "import sys; sys.path.insert(0, '$(site_packages)/raa/vendor')" >> $(pth_file)
+	cp include/mungepath.py $(site_packages)/
+	echo "import mungepath; mungepath.insert('$(CURDIR)/include')" > $(pth_file)
+	echo "$(site_packages)/raa/vendor" >> $(pth_file)
 
 uninstall-pth:
 	rm -f $(pth_file)
