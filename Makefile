@@ -80,8 +80,9 @@ clean:
 	make -C mint clean
 
 install-pth:
-	echo "import sys; sys.path.insert(0, '$(CURDIR)/include')" > $(pth_file)
-	echo "import sys; sys.path.insert(0, '$(site_packages)/raa/vendor')" >> $(pth_file)
+	cp include/mungepath.py $(site_packages)/
+	echo "import mungepath; mungepath.insert('$(CURDIR)/include')" > $(pth_file)
+	echo "$(site_packages)/raa/vendor" >> $(pth_file)
 
 uninstall-pth:
 	rm -f $(pth_file)
@@ -89,7 +90,7 @@ uninstall-pth:
 update:
 	[ -f /etc/conary/system-model ] || cp rbuilder-system-model /etc/conary/system-model
 	sed -i \
-		-e "s#^search group-rbuilder-\(dist\|appliance\)=.*#search $(shell conary rq --labels group-rbuilder-dist=newton.eng.rpath.com@rpath:rba-$(BRANCH))#" \
+		-e "s#^search group-rbuilder-\(dist\|appliance\)=.*#search $(shell conary rq --labels group-rbuilder-dist=newton.eng.rpath.com@rpath:rba-$(BRANCH)-rba)#" \
 		-e "s#^search group-rpath-platform=.*#search $(shell conary rq --labels group-rpath-platform=newton.eng.rpath.com@rpath:platform-$(BRANCH)-devel)#" \
 		/etc/conary/system-model
 	conary sync

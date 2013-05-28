@@ -1,39 +1,29 @@
-search group-os=conary.rpath.com@rpl:2-qa/2.0.2-0.3-8
-search group-os=conary.rpath.com@rpl:2-py26-devel/20110502-0.0.1-4
-search group-rbuilder-dist=newton.eng.rpath.com@rpath:rba-goad-p4/7.0.4.2-4-39
+search group-rpath-packages=centos6.rpath.com@rpath:centos-6-common/3.1.18b5a80ece33-2-1
+search group-os=centos6.rpath.com@rpath:centos-6e/2013.03.12_2112.31-1-1
+search group-rpath-platform=newton.eng.rpath.com@rpath:platform-beryl-devel/8.0.0-10-3
+search group-rbuilder-dist=newton.eng.rpath.com@rpath:rba-beryl/0-2-1
 install group-rbuilder-appliance
 
-search bzr=contrib.rpath.org@rpl:2/2.2.1-0.1-1
-search hg-forest=contrib.rpath.org@rpl:2-py26/hg.bf6d44054cec-1-0.1
-search mercurial=cantwait.rpath.org@rpl:2-py26
-search pyflakes=contrib.rpath.org@rpl:2-py26/0.4.0-1-0.1
-search reportlab=contrib.rpath.org@rpl:2-py26/2.4-0.0.1-2
-search squid=contrib.rpath.org@rpl:2/3.1.10-1-0.1
-search testutils=newton.eng.rpath.com@rpath:testutils-python2.6
-search webunit=contrib.rpath.org@rpl:2-py26/1.3.8-8.1-0.0.1
+install hg-forest=contrib.rpath.org@rpl:2-py26/hg.bf6d44054cec-1-0.1
+install mercurial=cantwait.rpath.org@rpl:2-py26/2.2.2-0.0.0.1-1
+install pyflakes=contrib.rpath.org@rpl:2-py26/0.4.0-1-0.1
 
 # Tools and daemons
 install bzip2
 install ctags
 install curl
 install file
-install gnupg
 install less
 install man
-install cdrkit
 install nc
 install ncurses
 install neon
-install openssh
-install openssh-client
 install perl
 install popt
-install rmake
 install rsh
-install squid
+#install squid
 install sudo
 install tmpwatch
-install vim
 install which
 
 # C toolchain
@@ -41,7 +31,6 @@ install autoconf
 install automake
 install binutils
 install bison
-install debugedit
 install elfutils
 install flex
 install gcc
@@ -55,25 +44,20 @@ install make
 install pcre
 install pkgconfig
 install strace
-install userspace-kernel-headers
 install xmlto
 
 # C libraries
-install libcap
+install libcap-devel
 install libelf-lgpl
-install libxml2
-install openssl
-install python
-install python2.4
-install sqlite
-install zlib
+install libxml2-devel
+install openssl-devel
+install python-devel
+install sqlite-devel
+install zlib-devel
 
 # Source control
-install bzr
 install cvs
 install git
-install hg-forest
-install mercurial
 install patch
 install subversion
 install tar
@@ -81,33 +65,13 @@ install unzip
 install xz
 
 # Python libraries
-install decorator
-install django-debug-toolbar
-install django-db-postgres
-install django-db-sqlite3
-install django-rest-interface
-install epdb
-install kid
-install lxml
-install nss
-install psycopg2
-install python-dateutil
-install python-pgsql
-install python-setuptools
-install python-setuptools
-install python-twisted
-install readline
-install reportlab
-install rpath-common
-install rpath-product-definition
-install simplejson
-install SQLAlchemy
-install testutils
-install webunit
+install testutils=newton.eng.rpath.com@rpath:centos-6n-testutils/ae5c026ecf70-1-1
+install python-webunit
 
 # Misc requirements
 install asciidoc
-install docbook-dsssl
-install docbook-dtds
-install docbook-xsl
-install django
+install conary-build conary-repository conary-policy distro-policy python-devel
+install expat-devel
+install glibc-utils expat-devel libidn-devel
+install python-simplejson
+install tmux=contrib.rpath.org@rpath:centos-6n/1.7-4-1 libevent:lib=contrib.rpath.org@rpath:centos-6n/2.0.18_stable-2-1
