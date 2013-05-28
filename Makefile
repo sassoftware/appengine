@@ -50,7 +50,6 @@ tag_dirs = \
 all:
 	for x in $(make_dirs); do $(MAKE) -C $$x || exit 1; done
 	$(MAKE) -C rmake3 rmake3
-	$(MAKE) -C pcreator-test replace-rpl2
 	$(MAKE) -C mint
 	( cd jobmaster && $(PYTHON) setup.py build_ext --inplace )
 	$(PYTHON) -mcompileall -f `pwd`/include/*
