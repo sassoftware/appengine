@@ -14,6 +14,8 @@ fi
 hostname=$1
 branch=$2
 
+local_checkout=$(dirname $0)
+
 function run() {
     ssh -A root@$hostname "$*"
     rc=$?
@@ -58,7 +60,7 @@ EOF
 
 copy $tmpcnyconf /etc/conary/config.d/httpProxy
 
-cat ~/hg/rbuilder-$branch/rbuilder-system-model | sed -e "s|^search\ group-rpath-platform.*|search\ $platform|" | sed -e "s|^search\ group-rbuilder-dist.*|search\ $dist|" > /tmp/rbuilder-system-model
+cat $local_checkout/rbuilder-system-model | sed -e "s|^search\ group-rpath-platform.*|search\ $platform|" | sed -e "s|^search\ group-rbuilder-dist.*|search\ $dist|" > /tmp/rbuilder-system-model
 
 # Configure conary to use rbuilder.unx as a proxy
 run "echo 'includeConfigFile http://delphi.unx.sas.com/conaryrc' > /etc/conary/config.d/proxy"
