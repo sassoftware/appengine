@@ -6,6 +6,9 @@
 # install any needed dev tools.
 #
 
+echo Someone ought to fix this script
+exit 1
+
 if [ ! $# -eq 2 ] ; then
     echo "usage: $0 <hostname> <rbuilder branch>"
     exit 1
