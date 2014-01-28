@@ -1,0 +1,141 @@
+[submodule "amiconfig"]
+	path = amiconfig
+	url = ../amiconfig
+[submodule "amiconfig-vmwareguest"]
+	path = amiconfig-vmwareguest
+	url = ../amiconfig-vmwareguest
+[submodule "barnacle"]
+	path = barnacle
+	url = ../barnacle
+[submodule "bob-plans"]
+	path = bob-plans
+	url = ../bob-plans
+[submodule "catalog-service"]
+	path = catalog-service
+	url = ../catalog-service
+[submodule "conary"]
+	path = conary
+	url = ../conary
+[submodule "conary-policy"]
+	path = conary-policy
+	url = ../conary-policy
+[submodule "crest"]
+	path = crest
+	url = ../crest
+[submodule "docs"]
+	path = docs
+	url = ../docs
+[submodule "entsrv"]
+	path = entsrv
+	url = ../entsrv
+[submodule "flex3p"]
+	path = flex3p
+	url = ../flex3p
+[submodule "flexlibs"]
+	path = flexlibs
+	url = ../flexlibs
+[submodule "hudson"]
+	path = hudson
+	url = ../hudson
+[submodule "hudson-src"]
+	path = hudson-src
+	url = ../hudson-src
+[submodule "iconfig"]
+	path = iconfig
+	url = ../iconfig
+[submodule "iconfig-windows"]
+	path = iconfig-windows
+	url = ../iconfig-windows
+[submodule "jobmaster"]
+	path = jobmaster
+	url = ../jobmaster
+[submodule "jobslave"]
+	path = jobslave
+	url = ../jobslave
+[submodule "mcp"]
+	path = mcp
+	url = ../mcp
+[submodule "mint"]
+	path = mint
+	url = ../mint
+[submodule "pcreator"]
+	path = pcreator
+	url = ../pcreator
+[submodule "pyovf"]
+	path = pyovf
+	url = ../pyovf
+[submodule "qa"]
+	path = qa
+	url = ../qa
+[submodule "rbm"]
+	path = rbm
+	url = ../rbm
+[submodule "rbuilder-ui"]
+	path = rbuilder-ui
+	url = ../rbuilder-ui
+[submodule "rbuild"]
+	path = rbuild
+	url = ../rbuild
+[submodule "recipes"]
+	path = recipes
+	url = ../recipes
+[submodule "repodata"]
+	path = repodata
+	url = ../repodata
+[submodule "restlib"]
+	path = restlib
+	url = ../restlib
+[submodule "rmake3"]
+	path = rmake3
+	url = ../rmake3
+[submodule "rmake"]
+	path = rmake
+	url = ../rmake
+[submodule "robj"]
+	path = robj
+	url = ../robj
+[submodule "rpath-capsule-indexer"]
+	path = rpath-capsule-indexer
+	url = ../rpath-capsule-indexer
+[submodule "rpath-cli"]
+	path = rpath-cli
+	url = ../rpath-cli
+[submodule "rpath-job"]
+	path = rpath-job
+	url = ../rpath-job
+[submodule "rpath-models"]
+	path = rpath-models
+	url = ../rpath-models
+[submodule "rpath-product-definition"]
+	path = rpath-product-definition
+	url = ../rpath-product-definition
+[submodule "rpath-repeater"]
+	path = rpath-repeater
+	url = ../rpath-repeater
+[submodule "rpath-sdk"]
+	path = rpath-sdk
+	url = ../rpath-sdk
+[submodule "rpath-storage"]
+	path = rpath-storage
+	url = ../rpath-storage
+[submodule "rpath-tools"]
+	path = rpath-tools
+	url = ../rpath-tools
+[submodule "rpath-tools-windows"]
+	path = rpath-tools-windows
+	url = ../rpath-tools-windows
+[submodule "rpath-xmllib"]
+	path = rpath-xmllib
+	url = ../rpath-xmllib
+[submodule "smartform"]
+	path = smartform
+	url = ../smartform
+[submodule "wmiclient"]
+	path = wmiclient
+	url = ../wmiclient
+[submodule "xml_resources"]
+	path = xml_resources
+	url = ../xml_resources
+[submodule "xobj"]
+	path = xobj
+	url = ../xobj
