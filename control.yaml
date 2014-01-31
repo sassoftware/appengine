@@ -11,10 +11,6 @@ subrepos:
 - entsrv
 - flex3p
 - flexlibs
-- hudson
-- hudson-src
-- iconfig
-- iconfig-windows
 - jobmaster
 - jobslave
 - mcp
@@ -32,7 +28,6 @@ subrepos:
 - rmake3
 - robj
 - rpath-capsule-indexer
-- rpath-cli
 - rpath-job
 - rpath-models
 - rpath-product-definition
