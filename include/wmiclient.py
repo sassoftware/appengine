@@ -1,1 +1,1 @@
-../wmiclient/py/wmiclient.py
+../../wmiclient/py/wmiclient.py
