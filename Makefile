@@ -47,14 +47,14 @@ tag_dirs = \
 
 
 all:
-	for x in $(make_dirs); do $(MAKE) -C $$x || exit 1; done
-	$(MAKE) -C rmake3 rmake3
-	$(MAKE) -C mint
-	( cd jobmaster && $(PYTHON) setup.py build_ext --inplace )
+	for x in $(make_dirs); do $(MAKE) -C ../$$x || exit 1; done
+	$(MAKE) -C ../rmake3 rmake3
+	$(MAKE) -C ../mint
+	( cd ../jobmaster && $(PYTHON) setup.py build_ext --inplace )
 	$(PYTHON) -mcompileall -f `pwd`/include/*
 
 clean:
-	for x in $(make_dirs); do $(MAKE) -C $$x clean || exit 1; done
+	for x in $(make_dirs); do $(MAKE) -C ../$$x clean || exit 1; done
 	make -C mint clean
 
 install-pth:
