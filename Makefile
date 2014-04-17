@@ -51,7 +51,7 @@ all:
 	$(MAKE) -C ../rmake3 rmake3
 	$(MAKE) -C ../mint
 	( cd ../jobmaster && $(PYTHON) setup.py build_ext --inplace )
-	$(PYTHON) -mcompileall -f `pwd`/include/*
+	$(PYTHON) -mcompileall `pwd`/include/ `pwd`/include/*/
 
 clean:
 	for x in $(make_dirs); do $(MAKE) -C ../$$x clean || exit 1; done
