@@ -4,9 +4,9 @@ search group-rpath-platform=newton.eng.rpath.com@rpath:platform-beryl-devel/8.0.
 search group-rbuilder-dist=newton.eng.rpath.com@rpath:rba-beryl/0-2-1
 install group-rbuilder-appliance
 
-install hg-forest=contrib.rpath.org@rpl:2-py26/hg.bf6d44054cec-1-0.1
-install mercurial=cantwait.rpath.org@rpl:2-py26/2.2.2-0.0.0.1-1
+install git=contrib.rpath.org@rpath:centos-6n/1.8.4.2-4-2
 install pyflakes=contrib.rpath.org@rpl:2-py26/0.4.0-1-0.1
+install forester=newton.eng.rpath.com@sas:build-tools-master/master.0c395e4be55b-1-1
 
 # Tools and daemons
 install bzip2
@@ -57,7 +57,6 @@ install zlib-devel
 
 # Source control
 install cvs
-install git
 install patch
 install subversion
 install tar
