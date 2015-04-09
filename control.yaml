@@ -16,7 +16,6 @@ subrepos:
 - jobslave
 - mcp
 - mint
-- pcreator
 - pyovf
 - qa
 - rbm
