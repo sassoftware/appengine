@@ -1,1 +1,0 @@
-../../rpath-repeater/rmake_plugins/assimilator_plugin.py

@@ -1,1 +1,1 @@
-../../mint/rmake_plugins/launch_plugin.py
+../../../mint/rmake_plugins/launch_plugin.py

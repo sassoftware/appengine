@@ -1,1 +1,0 @@
-../../rpath-repeater/rmake_plugins/wmi_forwarding_plugin.py

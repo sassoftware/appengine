@@ -1,1 +1,1 @@
-../../catalog-service/rmake_plugins/targets_plugin.py
+../../../catalog-service/rmake_plugins/targets_plugin.py
