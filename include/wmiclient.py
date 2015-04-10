@@ -1,1 +1,0 @@
-../../wmiclient/py/wmiclient.py
