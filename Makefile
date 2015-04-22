@@ -18,7 +18,6 @@ make_dirs = \
 	rbuild \
 	rmake \
 	rmake3 \
-	rpath-capsule-indexer \
 	rpath-models \
 	rpath-product-definition \
 	rpath-repeater \
