@@ -1,7 +1,5 @@
 subrepos:
 - amiconfig
-- amiconfig-vmwareguest
-- barnacle
 - bob-plans
 - catalog-service
 - conary
@@ -11,7 +9,6 @@ subrepos:
 - entsrv
 - flex3p
 - flexlibs
-- forester
 - jobmaster
 - jobslave
 - mcp
@@ -30,12 +27,9 @@ subrepos:
 - rpath-models
 - rpath-product-definition
 - rpath-repeater
-- rpath-sdk
 - rpath-storage
 - rpath-tools
-- rpath-tools-windows
 - rpath-xmllib
 - smartform
 - xml_resources
 - xobj
-
