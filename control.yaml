@@ -31,5 +31,6 @@ subrepos:
 - rpath-tools
 - rpath-xmllib
 - smartform
+- testutils
 - xml_resources
 - xobj
