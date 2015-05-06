@@ -6,8 +6,8 @@ subrepos:
 - conary-policy
 - crest
 - docs
-- ../internal/entsrv
-- ../archive/flex3p
+- gerrit-pdt/internal/entsrv
+- gerrit-pdt/archive/flex3p
 - flexlibs
 - jobmaster
 - jobslave
