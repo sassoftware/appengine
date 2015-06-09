@@ -9,6 +9,7 @@ subrepos:
 - gerrit-pdt/internal/entsrv
 - gerrit-pdt/archive/flex3p
 - flexlibs
+- gerrit-pdt/tools/forester
 - jobmaster
 - jobslave
 - mcp
