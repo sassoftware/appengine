@@ -31,7 +31,7 @@ make_dirs = \
 	rbuild \
 	rmake \
 	rmake3 \
-	rpath-models \
+	rpath-job \
 	rpath-product-definition \
 	rpath-repeater \
 	rpath-storage \
