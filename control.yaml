@@ -5,7 +5,6 @@ subrepos:
 - conary
 - conary-policy
 - crest
-- docs
 - gerrit-pdt/internal/entsrv
 - gerrit-pdt/archive/flex3p
 - flexlibs
