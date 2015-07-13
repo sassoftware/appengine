@@ -15,19 +15,21 @@ Next, create a virtual machine in which to install the App Engine.
 The following minimum requirements are recommended:
 
 * 64-bit CPU
-* 2 GiB RAM minimum, 4 GiB recommended
+* 2 GB RAM minimum, 4 GB recommended
 * 100 GB disk space
 * Internet connection
 
 Attach the ISO to the virtual machine and proceed with installation.
 By default, half of the available disk space will be reserved for image
 building. If you customize the partitioning scheme you must leave unallocated
-LVM space for image builds. Do not enable disk encryption.
+LVM space for image builds.
+
+**Note:** Do not enable disk encryption.
 
 System Configuration
 ====================
 
-After the install, a number of system configuration files should be adjusted.
+After the install, you must modify a number of system configuration files.
 Log into the console with username ``root`` and the password chosen at install
 time.
 
@@ -38,42 +40,49 @@ If the hostname was changed, reboot or set it manually with the ``hostname``
 command.
 
 **/etc/ssh/sshd_config** : The ``amiconfig`` daemon disables password SSH logins
-by default. Find the line containing ``PasswordAuthentication yes`` and delete
-it. Also run ``chkconfig amiconfig off`` to prevent it from undoing this change
-in the future. Run ``service sshd restart`` so the changes take effect.
+by default.
+
+* Find the line containing ``PasswordAuthentication yes`` and delete it.
+* Run ``chkconfig amiconfig off`` to prevent amiconfig from undoing this change
+  in the future.
+* Run ``service sshd restart`` so the changes take effect.
 
 At this point you may wish to switch to using SSH for convenience rather than
 direct console access.
 
-**/root/.conaryrc** : Create this file with the contents::
+**/root/.conaryrc** : Create this file containing the following line::
 
     includeConfigFile https://updates.sas.com/conaryrc
 
 This will ensure that system updates can find the App Engine upstream
 repositories.
 
-**/etc/conary/system-model** : Change group-rbuilder-dist to
-``group-rbuilder-devel``. Run ``conary updateall``. This will both bring the App
-Engine to the latest build if the ISO is out of date, and also install all of
-the developer tools and libraries that are not in the ISO.
+**/etc/conary/system-model** : In this file, change ``group-rbuilder-dist`` to
+``group-rbuilder-devel``. Save your changes, then run ``conary updateall``.
+This will both bring the App Engine to the latest build if the ISO is out of
+date, and also install all of the developer tools and libraries that are not in
+the ISO.
 
 App Engine Configuration
 ========================
 
-Edit **/etc/rbuilder.pp**. Set ``$admin_email``. It is recommended to set
-project_domain to something unique to your App Engine install, for example
-"bobs-appengine". Repository hostnames for newly created projects will be
-constructed from this value. It does not need to be resolveable. Namespace and
+Edit **/etc/rbuilder.pp**. Set ``$admin_email``. Set project_domain to
+something unique to your App Engine install, for example "bobs-appengine".
+Repository hostnames for newly created projects will be constructed from this
+value. project_domain does not need to be resolveable. Namespace and
 project_domain can be changed later, but will not affect existing projects.
 
 Run ``puppet apply --debug /etc/rbuilder.pp``. This will adjust additional
 system configuration, create the App Engine configuration, and start services.
 
 Run ``/usr/share/rbuilder/scripts/mint-admin user-add`` to create your
-App Engine user account. Do not name the account "admin".
+App Engine user account.
 
-Create a non-root system user for development purposes, using ``useradd``. It
-does not have to have the same name as the App Engine user created above.
+**Note:** Do not name the App Engine account "admin".
+
+Using ``useradd``, create a non-root system user account for development
+purposes. It does not have to have the same name as the App Engine user created
+above.
 
 Developer Setup
 ===============

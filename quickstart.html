@@ -130,18 +130,19 @@ The weekly developer build can be downloaded from the following location:
 The following minimum requirements are recommended:</p>
 <ul class="simple">
 <li>64-bit CPU</li>
-<li>2 GiB RAM minimum, 4 GiB recommended</li>
+<li>2 GB RAM minimum, 4 GB recommended</li>
 <li>100 GB disk space</li>
 <li>Internet connection</li>
 </ul>
 <p>Attach the ISO to the virtual machine and proceed with installation.
 By default, half of the available disk space will be reserved for image
 building. If you customize the partitioning scheme you must leave unallocated
-LVM space for image builds. Do not enable disk encryption.</p>
+LVM space for image builds.</p>
+<p><strong>Note:</strong> Do not enable disk encryption.</p>
 </div>
 <div class="section" id="system-configuration">
 <h2>System Configuration<a class="headerlink" href="#system-configuration" title="Permalink to this headline">¶</a></h2>
-<p>After the install, a number of system configuration files should be adjusted.
+<p>After the install, you must modify a number of system configuration files.
 Log into the console with username <code class="docutils literal"><span class="pre">root</span></code> and the password chosen at install
 time.</p>
 <p><strong>/etc/sysconfig/network</strong> : App Engine requires a valid hostname other than
@@ -150,35 +151,42 @@ time.</p>
 If the hostname was changed, reboot or set it manually with the <code class="docutils literal"><span class="pre">hostname</span></code>
 command.</p>
 <p><strong>/etc/ssh/sshd_config</strong> : The <code class="docutils literal"><span class="pre">amiconfig</span></code> daemon disables password SSH logins
-by default. Find the line containing <code class="docutils literal"><span class="pre">PasswordAuthentication</span> <span class="pre">yes</span></code> and delete
-it. Also run <code class="docutils literal"><span class="pre">chkconfig</span> <span class="pre">amiconfig</span> <span class="pre">off</span></code> to prevent it from undoing this change
-in the future. Run <code class="docutils literal"><span class="pre">service</span> <span class="pre">sshd</span> <span class="pre">restart</span></code> so the changes take effect.</p>
+by default.</p>
+<ul class="simple">
+<li>Find the line containing <code class="docutils literal"><span class="pre">PasswordAuthentication</span> <span class="pre">yes</span></code> and delete it.</li>
+<li>Run <code class="docutils literal"><span class="pre">chkconfig</span> <span class="pre">amiconfig</span> <span class="pre">off</span></code> to prevent amiconfig from undoing this change
+in the future.</li>
+<li>Run <code class="docutils literal"><span class="pre">service</span> <span class="pre">sshd</span> <span class="pre">restart</span></code> so the changes take effect.</li>
+</ul>
 <p>At this point you may wish to switch to using SSH for convenience rather than
 direct console access.</p>
-<p><strong>/root/.conaryrc</strong> : Create this file with the contents:</p>
+<p><strong>/root/.conaryrc</strong> : Create this file containing the following line:</p>
 <div class="highlight-python"><div class="highlight"><pre>includeConfigFile https://updates.sas.com/conaryrc
 </pre></div>
 </div>
 <p>This will ensure that system updates can find the App Engine upstream
 repositories.</p>
-<p><strong>/etc/conary/system-model</strong> : Change group-rbuilder-dist to
-<code class="docutils literal"><span class="pre">group-rbuilder-devel</span></code>. Run <code class="docutils literal"><span class="pre">conary</span> <span class="pre">updateall</span></code>. This will both bring the App
-Engine to the latest build if the ISO is out of date, and also install all of
-the developer tools and libraries that are not in the ISO.</p>
+<p><strong>/etc/conary/system-model</strong> : In this file, change <code class="docutils literal"><span class="pre">group-rbuilder-dist</span></code> to
+<code class="docutils literal"><span class="pre">group-rbuilder-devel</span></code>. Save your changes, then run <code class="docutils literal"><span class="pre">conary</span> <span class="pre">updateall</span></code>.
+This will both bring the App Engine to the latest build if the ISO is out of
+date, and also install all of the developer tools and libraries that are not in
+the ISO.</p>
 </div>
 <div class="section" id="app-engine-configuration">
 <h2>App Engine Configuration<a class="headerlink" href="#app-engine-configuration" title="Permalink to this headline">¶</a></h2>
-<p>Edit <strong>/etc/rbuilder.pp</strong>. Set <code class="docutils literal"><span class="pre">$admin_email</span></code>. It is recommended to set
-project_domain to something unique to your App Engine install, for example
-&#8220;bobs-appengine&#8221;. Repository hostnames for newly created projects will be
-constructed from this value. It does not need to be resolveable. Namespace and
+<p>Edit <strong>/etc/rbuilder.pp</strong>. Set <code class="docutils literal"><span class="pre">$admin_email</span></code>. Set project_domain to
+something unique to your App Engine install, for example &#8220;bobs-appengine&#8221;.
+Repository hostnames for newly created projects will be constructed from this
+value. project_domain does not need to be resolveable. Namespace and
 project_domain can be changed later, but will not affect existing projects.</p>
 <p>Run <code class="docutils literal"><span class="pre">puppet</span> <span class="pre">apply</span> <span class="pre">--debug</span> <span class="pre">/etc/rbuilder.pp</span></code>. This will adjust additional
 system configuration, create the App Engine configuration, and start services.</p>
 <p>Run <code class="docutils literal"><span class="pre">/usr/share/rbuilder/scripts/mint-admin</span> <span class="pre">user-add</span></code> to create your
-App Engine user account. Do not name the account &#8220;admin&#8221;.</p>
-<p>Create a non-root system user for development purposes, using <code class="docutils literal"><span class="pre">useradd</span></code>. It
-does not have to have the same name as the App Engine user created above.</p>
+App Engine user account.</p>
+<p><strong>Note:</strong> Do not name the App Engine account &#8220;admin&#8221;.</p>
+<p>Using <code class="docutils literal"><span class="pre">useradd</span></code>, create a non-root system user account for development
+purposes. It does not have to have the same name as the App Engine user created
+above.</p>
 </div>
 <div class="section" id="developer-setup">
 <h2>Developer Setup<a class="headerlink" href="#developer-setup" title="Permalink to this headline">¶</a></h2>
