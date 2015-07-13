@@ -1,0 +1,322 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Developer Quick Start Guide &mdash; SAS App Engine 8 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="SAS App Engine 8 documentation" href="index.html"/>
+        <link rel="prev" title="SAS App Engine Documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="index.html" class="icon icon-home"> SAS App Engine
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Developer Quick Start Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#system-configuration">System Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app-engine-configuration">App Engine Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#developer-setup">Developer Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rbuild-configuration">rbuild Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-project">Example Project</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">SAS App Engine</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Developer Quick Start Guide</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/quickstart.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="developer-quick-start-guide">
+<h1>Developer Quick Start Guide<a class="headerlink" href="#developer-quick-start-guide" title="Permalink to this headline">¶</a></h1>
+<p>The following is a brief guide on how to deploy a SAS App Engine and prepare it
+for developing and testing App Engine components in-place.</p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>First, obtain the Installable ISO media.
+The weekly developer build can be downloaded from the following location:
+<a class="reference external" href="https://sas-app-engine-ci.s3.amazonaws.com/appengine-8-devel-x86_64.iso">https://sas-app-engine-ci.s3.amazonaws.com/appengine-8-devel-x86_64.iso</a></p>
+<p>Next, create a virtual machine in which to install the App Engine.
+The following minimum requirements are recommended:</p>
+<ul class="simple">
+<li>64-bit CPU</li>
+<li>2 GiB RAM minimum, 4 GiB recommended</li>
+<li>100 GB disk space</li>
+<li>Internet connection</li>
+</ul>
+<p>Attach the ISO to the virtual machine and proceed with installation.
+By default, half of the available disk space will be reserved for image
+building. If you customize the partitioning scheme you must leave unallocated
+LVM space for image builds. Do not enable disk encryption.</p>
+</div>
+<div class="section" id="system-configuration">
+<h2>System Configuration<a class="headerlink" href="#system-configuration" title="Permalink to this headline">¶</a></h2>
+<p>After the install, a number of system configuration files should be adjusted.
+Log into the console with username <code class="docutils literal"><span class="pre">root</span></code> and the password chosen at install
+time.</p>
+<p><strong>/etc/sysconfig/network</strong> : App Engine requires a valid hostname other than
+&#8220;localhost&#8221;. If one has not been assigned by DHCP, set it here. The hostname
+<em>must</em> be resolveable, so if it is not then add it to <strong>/etc/hosts</strong> as well.
+If the hostname was changed, reboot or set it manually with the <code class="docutils literal"><span class="pre">hostname</span></code>
+command.</p>
+<p><strong>/etc/ssh/sshd_config</strong> : The <code class="docutils literal"><span class="pre">amiconfig</span></code> daemon disables password SSH logins
+by default. Find the line containing <code class="docutils literal"><span class="pre">PasswordAuthentication</span> <span class="pre">yes</span></code> and delete
+it. Also run <code class="docutils literal"><span class="pre">chkconfig</span> <span class="pre">amiconfig</span> <span class="pre">off</span></code> to prevent it from undoing this change
+in the future. Run <code class="docutils literal"><span class="pre">service</span> <span class="pre">sshd</span> <span class="pre">restart</span></code> so the changes take effect.</p>
+<p>At this point you may wish to switch to using SSH for convenience rather than
+direct console access.</p>
+<p><strong>/root/.conaryrc</strong> : Create this file with the contents:</p>
+<div class="highlight-python"><div class="highlight"><pre>includeConfigFile https://updates.sas.com/conaryrc
+</pre></div>
+</div>
+<p>This will ensure that system updates can find the App Engine upstream
+repositories.</p>
+<p><strong>/etc/conary/system-model</strong> : Change group-rbuilder-dist to
+<code class="docutils literal"><span class="pre">group-rbuilder-devel</span></code>. Run <code class="docutils literal"><span class="pre">conary</span> <span class="pre">updateall</span></code>. This will both bring the App
+Engine to the latest build if the ISO is out of date, and also install all of
+the developer tools and libraries that are not in the ISO.</p>
+</div>
+<div class="section" id="app-engine-configuration">
+<h2>App Engine Configuration<a class="headerlink" href="#app-engine-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Edit <strong>/etc/rbuilder.pp</strong>. Set <code class="docutils literal"><span class="pre">$admin_email</span></code>. It is recommended to set
+project_domain to something unique to your App Engine install, for example
+&#8220;bobs-appengine&#8221;. Repository hostnames for newly created projects will be
+constructed from this value. It does not need to be resolveable. Namespace and
+project_domain can be changed later, but will not affect existing projects.</p>
+<p>Run <code class="docutils literal"><span class="pre">puppet</span> <span class="pre">apply</span> <span class="pre">--debug</span> <span class="pre">/etc/rbuilder.pp</span></code>. This will adjust additional
+system configuration, create the App Engine configuration, and start services.</p>
+<p>Run <code class="docutils literal"><span class="pre">/usr/share/rbuilder/scripts/mint-admin</span> <span class="pre">user-add</span></code> to create your
+App Engine user account. Do not name the account &#8220;admin&#8221;.</p>
+<p>Create a non-root system user for development purposes, using <code class="docutils literal"><span class="pre">useradd</span></code>. It
+does not have to have the same name as the App Engine user created above.</p>
+</div>
+<div class="section" id="developer-setup">
+<h2>Developer Setup<a class="headerlink" href="#developer-setup" title="Permalink to this headline">¶</a></h2>
+<p>This section details how to check out the App Engine source code, build it, and
+reconfigure the running App Engine run out of the checkout instead of the
+installed packages. It is not necessary to perform this step immediately; you
+can come back to it after verifying initial operation of the App Engine
+installation if you wish.</p>
+<p>First, as root, create a directory in which to place the checkout.</p>
+<div class="highlight-python"><div class="highlight"><pre>mkdir /srv/code
+chown myuser:myuser /srv/code
+</pre></div>
+</div>
+<p>Then, as the non-root user, checkout the App Engine codebase from Github.</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo -u myuser -i
+cd /srv/code
+git clone https://github.com/sassoftware/appengine -b master
+./appengine/multigit
+make -C appengine
+</pre></div>
+</div>
+<p>Finally, as root, insert the newly-built checkout into the Python search path:</p>
+<div class="highlight-python"><div class="highlight"><pre>make -C /srv/code/appengine install-pth
+</pre></div>
+</div>
+<p>Reboot the App Engine to complete the initial setup.</p>
+</div>
+<div class="section" id="rbuild-configuration">
+<h2>rbuild Configuration<a class="headerlink" href="#rbuild-configuration" title="Permalink to this headline">¶</a></h2>
+<p><strong>rbuild</strong> is the primary command-line tool for interacting with an App Engine.</p>
+<p>Switch to the development user by logging out and back in or using <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">-u</span>
+<span class="pre">myuser</span> <span class="pre">-i</span></code>. Run <code class="docutils literal"><span class="pre">rbuild</span> <span class="pre">config</span> <span class="pre">--ask</span></code>. You can accept the defaults when
+present.</p>
+<p>Run <code class="docutils literal"><span class="pre">rbuild</span> <span class="pre">config</span> <span class="pre">--conaryrc</span> <span class="pre">--rmakerc</span></code> to finish preparing the rbuild environment.</p>
+</div>
+<div class="section" id="example-project">
+<h2>Example Project<a class="headerlink" href="#example-project" title="Permalink to this headline">¶</a></h2>
+<p>The following will create an example project with a CentOS minimal install and
+some extra packages and build an image.</p>
+<p>Create a project and branch to work in. Run <code class="docutils literal"><span class="pre">rbuild</span> <span class="pre">create</span> <span class="pre">project</span></code> and
+give the following answers:</p>
+<div class="highlight-python"><div class="highlight"><pre>Project name:           Example Project
+Project description:
+Unique name:            example
+Domain name:
+</pre></div>
+</div>
+<p>Create a branch of the project using <code class="docutils literal"><span class="pre">rbuild</span> <span class="pre">create</span> <span class="pre">branch</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre>Project name:           example
+Branch name:            1
+Branch description:
+Namespace:
+Platform:               1 (or whichever number corresponds to CentOS 6)
+</pre></div>
+</div>
+<p>Now initialize the checkout with <code class="docutils literal"><span class="pre">rbuild</span> <span class="pre">init</span> <span class="pre">example</span> <span class="pre">1</span></code> and <code class="docutils literal"><span class="pre">cd</span>
+<span class="pre">example-1/Development</span></code>.</p>
+<p>Next create &#8220;image definitions&#8221;, which describe which kind of images this
+project will build. Run <code class="docutils literal"><span class="pre">rbuild</span> <span class="pre">add</span> <span class="pre">imagedef</span> <span class="pre">vmwareImage</span> <span class="pre">x86_64</span></code> to add a
+VMware Workstation image output. For &#8220;Image name&#8221; give &#8220;vmware64&#8221;, and leave
+the rest of the answers at their defaults. To see what other image types are
+available, see <code class="docutils literal"><span class="pre">rbuild</span> <span class="pre">list</span> <span class="pre">imagetypes</span></code>.</p>
+<p>Create a &#8220;group recipe&#8221; to describe which components will go into the image.
+Run <code class="docutils literal"><span class="pre">rbuild</span> <span class="pre">checkout</span> <span class="pre">group-example-appliance</span></code>, then edit
+<code class="docutils literal"><span class="pre">group-example-appliance/group-example-appliance.recipe</span></code>. Set the &#8220;version&#8221;
+variable to a non-empty string (e.g. &#8220;1&#8221;). Change &#8220;pass&#8221; at the end to the following:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">r</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;rsync&quot;</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;vim-enhanced&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Save and close the recipe, then run <code class="docutils literal"><span class="pre">rbuild</span> <span class="pre">build</span> <span class="pre">groups</span></code> and finally
+<code class="docutils literal"><span class="pre">rbuild</span> <span class="pre">build</span> <span class="pre">images</span></code>. At the end of the image build, rbuild will print a url
+which you can download to get your VMware image.</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="SAS App Engine Documentation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, SAS Institute Inc..
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'8',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

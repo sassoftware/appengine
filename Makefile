@@ -16,11 +16,11 @@
 
 source_rev=master
 
-default: all
+default: stage
 
 add_files=*.html *.js *.inv _sources _static revision.txt
 
-all:
+stage:
 	rm -rf source
 	git rm -rf --ignore-unmatch ${add_files}
 	rm -rf ${add_files}
@@ -30,3 +30,7 @@ all:
 	mv source/docs/_build/html/* .
 	rm -rf source
 	git add ${add_files}
+
+publish: stage
+	git commit -m "Build revision $(shell cat revision.txt)"
+	git push origin HEAD
