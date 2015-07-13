@@ -18,7 +18,7 @@ source_rev=master
 
 default: stage
 
-add_files=*.html *.js *.inv _sources static revision.txt
+add_files=*.html *.js *.inv _sources _static revision.txt
 
 stage:
 	rm -rf source
