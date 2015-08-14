@@ -40,11 +40,12 @@ If the hostname was changed, reboot or set it manually with the ``hostname``
 command.
 
 **/etc/ssh/sshd_config** : The ``amiconfig`` daemon disables password SSH logins
-by default.
+by default when used with certain virtualization platforms.
 
-* Find the line containing ``PasswordAuthentication yes`` and delete it.
-* Run ``chkconfig amiconfig off`` to prevent amiconfig from undoing this change
-  in the future.
+* Look for a line containing ``PasswordAuthentication no`` and delete it, if it
+  exists.
+* Run ``chkconfig amiconfig off`` to prevent amiconfig from modifying the
+  configuration in the future.
 * Run ``service sshd restart`` so the changes take effect.
 
 At this point you may wish to switch to using SSH for convenience rather than
@@ -57,7 +58,7 @@ direct console access.
 This will ensure that system updates can find the App Engine upstream
 repositories.
 
-**/etc/conary/system-model** : In this file, change ``group-rbuilder-dist`` to
+**/etc/conary/system-model** : In this file, change ``group-rbuilder-appliance`` to
 ``group-rbuilder-devel``. Save your changes, then run ``conary updateall``.
 This will both bring the App Engine to the latest build if the ISO is out of
 date, and also install all of the developer tools and libraries that are not in
