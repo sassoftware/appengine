@@ -151,11 +151,12 @@ time.</p>
 If the hostname was changed, reboot or set it manually with the <code class="docutils literal"><span class="pre">hostname</span></code>
 command.</p>
 <p><strong>/etc/ssh/sshd_config</strong> : The <code class="docutils literal"><span class="pre">amiconfig</span></code> daemon disables password SSH logins
-by default.</p>
+by default when used with certain virtualization platforms.</p>
 <ul class="simple">
-<li>Find the line containing <code class="docutils literal"><span class="pre">PasswordAuthentication</span> <span class="pre">yes</span></code> and delete it.</li>
-<li>Run <code class="docutils literal"><span class="pre">chkconfig</span> <span class="pre">amiconfig</span> <span class="pre">off</span></code> to prevent amiconfig from undoing this change
-in the future.</li>
+<li>Look for a line containing <code class="docutils literal"><span class="pre">PasswordAuthentication</span> <span class="pre">no</span></code> and delete it, if it
+exists.</li>
+<li>Run <code class="docutils literal"><span class="pre">chkconfig</span> <span class="pre">amiconfig</span> <span class="pre">off</span></code> to prevent amiconfig from modifying the
+configuration in the future.</li>
 <li>Run <code class="docutils literal"><span class="pre">service</span> <span class="pre">sshd</span> <span class="pre">restart</span></code> so the changes take effect.</li>
 </ul>
 <p>At this point you may wish to switch to using SSH for convenience rather than
@@ -166,7 +167,7 @@ direct console access.</p>
 </div>
 <p>This will ensure that system updates can find the App Engine upstream
 repositories.</p>
-<p><strong>/etc/conary/system-model</strong> : In this file, change <code class="docutils literal"><span class="pre">group-rbuilder-dist</span></code> to
+<p><strong>/etc/conary/system-model</strong> : In this file, change <code class="docutils literal"><span class="pre">group-rbuilder-appliance</span></code> to
 <code class="docutils literal"><span class="pre">group-rbuilder-devel</span></code>. Save your changes, then run <code class="docutils literal"><span class="pre">conary</span> <span class="pre">updateall</span></code>.
 This will both bring the App Engine to the latest build if the ISO is out of
 date, and also install all of the developer tools and libraries that are not in
